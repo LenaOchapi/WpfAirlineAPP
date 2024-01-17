@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="f98efc1c25394f7bbc91b9a301a4f791" Name="Diagram1">
+        <EntityTypeShape EntityType="Model.Aboniment" Width="1.5" PointX="13" PointY="2" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.Adress" Width="1.5" PointX="7.75" PointY="1.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.Aircrafts" Width="1.5" PointX="0.75" PointY="7.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.AirplaneType" Width="1.5" PointX="1.5" PointY="13" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.Airports" Width="1.5" PointX="0.75" PointY="3.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.DanniePersonal" Width="1.5" PointX="8" PointY="13.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.Doljnosti" Width="1.5" PointX="5.75" PointY="13.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.employees" Width="1.5" PointX="3" PointY="15.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.flights" Width="1.5" PointX="3" PointY="2.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.flightsClass" Width="1.5" PointX="3" PointY="8.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.InfoZanitia" Width="1.5" PointX="10.25" PointY="9.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.InternationalPassportInform" Width="1.5" PointX="0.75" PointY="21" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.JobTitles" Width="1.5" PointX="0.75" PointY="15.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.Klient" Width="1.5" PointX="8" PointY="5.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.Kolichistvo" Width="1.5" PointX="10.25" PointY="6.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.Oplata" Width="1.5" PointX="15.25" PointY="2.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.Passengers" Width="1.5" PointX="5.25" PointY="3.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.PassengersPersInfo" Width="1.5" PointX="3" PointY="22.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.PassportDate" Width="1.5" PointX="0.75" PointY="30.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.Polizovateli" Width="1.5" PointX="10.25" PointY="13.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.SposobOplati" Width="1.5" PointX="13" PointY="6.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.sysdiagrams" Width="1.5" PointX="12.75" PointY="9.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.TipAbonimenta" Width="1.5" PointX="10.75" PointY="2.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.Tipzanitia" Width="1.5" PointX="5.75" PointY="9.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.Users" Width="1.5" PointX="0.75" PointY="17.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.VisaInformation" Width="1.5" PointX="1.5" PointY="26.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.Zanitie" Width="1.5" PointX="8" PointY="9.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.flightEmpoyees" Width="1.5" PointX="5.25" PointY="0.75" IsExpanded="true" />
+        <AssociationConnector Association="Model.FK_Aboniment_TipAbonimenta" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.FK_Oplata_Aboniment" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.FK_Aircrafts_AirplaneType" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.FK_flights_Aircrafts" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.FK_flights_Airports" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.FK_flights_Airports1" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.FK_DanniePersonal_Doljnosti" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.FK_InfoZanitia_DanniePersonal" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.FK_Polizovateli_DanniePersonal" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.FK_employees_JobTitles" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.FK_employees_Users" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.FK_flightEmpoyees_employees" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.FK_flightEmpoyees_flights1" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.FK_Passengers_flights" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.FK_Passengers_flightsClass" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.FK_InfoZanitia_Zanitie" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.FK_InternationalPassportInform_VisaInformation" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.FK_PassengersPersInfo_InternationalPassportInform" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.FK_Kolichistvo_Klient" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.FK_Kolichistvo_Zanitie" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.FK_Oplata_SposobOplati" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.FK_Passengers_PassengersPersInfo" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.FK_PassengersPersInfo_PassportDate" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.FK_Zanitie_Tipzanitia" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

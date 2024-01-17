@@ -1,0 +1,37 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.7.34031.279
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WpfAirlineAPP", "WpfAirlineAPP.csproj", "{CE61494C-B8CA-4A71-8675-02BE0634D3B3}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AddUser", "..\AddUser\AddUser.csproj", "{8638775D-F182-46F8-B220-092FAAC093B6}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HashPasswords", "..\HashPasswords\HashPasswords.csproj", "{AF019DF7-BC20-4CF2-B9B6-DBED3A013CBB}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{CE61494C-B8CA-4A71-8675-02BE0634D3B3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CE61494C-B8CA-4A71-8675-02BE0634D3B3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CE61494C-B8CA-4A71-8675-02BE0634D3B3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CE61494C-B8CA-4A71-8675-02BE0634D3B3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8638775D-F182-46F8-B220-092FAAC093B6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8638775D-F182-46F8-B220-092FAAC093B6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8638775D-F182-46F8-B220-092FAAC093B6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8638775D-F182-46F8-B220-092FAAC093B6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{AF019DF7-BC20-4CF2-B9B6-DBED3A013CBB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AF019DF7-BC20-4CF2-B9B6-DBED3A013CBB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AF019DF7-BC20-4CF2-B9B6-DBED3A013CBB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AF019DF7-BC20-4CF2-B9B6-DBED3A013CBB}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {0D8124A5-8B0A-46A8-8EA0-8146B9AC9028}
+	EndGlobalSection
+EndGlobal
