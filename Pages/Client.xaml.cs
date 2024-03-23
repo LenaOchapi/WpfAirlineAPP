@@ -25,18 +25,6 @@ namespace WpfAirlineAPP.Pages
         public Client()
         {
             InitializeComponent();
-            var Info = helper.GetContext().employees.ToList();
-            LViemProduct.ItemsSource = Info;
-        }
-
-        public void ListViewItem_MouseDoubleClick(object sender, MouseButtonEventArgs e)
-        {
-            //LViemProduct
-            var selectedUser = (Users)LViemProduct.SelectedItem;
-            int id = LViemProduct.SelectedIndex;
-            MessageBox.Show("Это тот id ? " + id);
-            //var selectedUser = (sender as FrameworkElement).DataContext;
-            NavigationService.Navigate(new Pages.OneClient(id));
         }
 
     }

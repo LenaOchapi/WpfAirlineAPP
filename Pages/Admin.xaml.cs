@@ -1,4 +1,5 @@
-﻿using System;
+﻿using AddUser.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Runtime.Remoting.Messaging;
@@ -13,6 +14,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using WpfAirlineAPP.Models;
 
 namespace WpfAirlineAPP.Pages
 {
@@ -21,57 +23,78 @@ namespace WpfAirlineAPP.Pages
     /// </summary>
     public partial class Admin : Page
     {
+
         public Admin(long id)
         {
             InitializeComponent();
-            var Info = helper.GetContext().employees.Where(n => n.idEmployee == id).FirstOrDefault();
-
-            //tbName.Text = Info.Name +" \n" + Info.Patronymic + Info.Surname + "\n";
-
-            tbWelcome.Text = GetGreetingMessage( Info.Name, Info.Patronymic, Info.Surname);
+            DateNow(id);
+            var Emp = helper.GetContext().employees.ToList();
+            LViemEmp.ItemsSource = Emp;
         }
-
-        private void Sotrudnik_SelectionChanged(object sender, SelectionChangedEventArgs e) 
+        public void DateNow(long id)
         {
-
-        }
-        public static string GetGreetingMessage(string userName, string userLastName, string userMiddleName)
-        {
+            var info = helper.GetContext().employees.Where(u => u.idEmployee == id).FirstOrDefault();
             DateTime currentTime = DateTime.Now;
-            string timeOfDay;
 
-            // Определение времени суток
-            if (currentTime.Hour >= 10 && currentTime.Hour <= 12)
-            {
-                timeOfDay = "Доброе утро";
-            }
-            else if (currentTime.Hour > 12 && currentTime.Hour <= 17)
-            {
-                timeOfDay = "Добрый день";
+
+            if (currentTime.Hour >= 10 && currentTime.Hour < 12)
+        {
+                lblHiEmp.Content = $"Доброе утро {info.Name} {info.Surname} {info.Patronymic}";
+
+        }
+            else if (currentTime.Hour >= 12 && currentTime.Hour <= 17)
+        {
+                lblHiEmp.Content = $"Добрый день {info.Name} {info.Surname} {info.Patronymic}";
+
             }
             else if (currentTime.Hour > 17 && currentTime.Hour <= 19)
             {
-                timeOfDay = "Добрый вечер";
+                lblHiEmp.Content = $"Добрый вечер {info.Name} {info.Surname} {info.Patronymic}";
+
+            }
+            }
+
+        private void btnFiltr_Click(object sender, RoutedEventArgs e)
+        {
+            var context = helper.GetContext();
+
+            var filteredData = context.employees;
+
+            if (!string.IsNullOrEmpty(tbSurname.Text) || !string.IsNullOrEmpty(tbName.Text) || !string.IsNullOrEmpty(tbPatronymic.Text))
+            {
+                var filtered = helper.GetContext().employees.Where(item => item.Surname.ToLower().Contains(tbSurname.Text.ToLower()) ||
+                        item.Name.ToLower().Contains(tbName.Text.ToLower()) ||
+                        item.Patronymic.ToLower().Contains(tbPatronymic.Text.ToLower())
+                    ).ToList();
+                LViemEmp.ItemsSource = filtered.ToList();
             }
             else
             {
-                timeOfDay = "Доброй ночи";
+                LViemEmp.ItemsSource = filteredData.ToList();
             }
-
-            // Создание приветственного сообщения
-            string greetingMessage = $" {timeOfDay} ! ";
-
-            if (!string.IsNullOrEmpty(userMiddleName))
-            {
-                greetingMessage += $" {userMiddleName} {userName} {userLastName} ";
-            }
-            else
-            {
-                greetingMessage += $"{userLastName} {userName}";
-            }
-
-            return greetingMessage;
         }
 
-    }
-}
+        //private void LViemEmp_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        //{
+
+
+        //    var u = LViemEmp.SelectedItem as AddUser.Models.employees;
+
+        //    NavigationService.Navigate(new Pages.Editing(u));
+        //}
+
+        private void tbName_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            tbName.Text = "";
+        }
+
+        private void btnAdd_Click(object sender, RoutedEventArgs e)
+        {
+            var u = LViemEmp.SelectedItem as WpfAirlineAPP.Models.employees;
+            NavigationService.Navigate(new Pages.Editing());
+        }
+
+
+            }
+            }
+
