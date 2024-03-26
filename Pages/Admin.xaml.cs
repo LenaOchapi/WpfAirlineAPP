@@ -24,26 +24,28 @@ namespace WpfAirlineAPP.Pages
     public partial class Admin : Page
     {
 
-        public Admin(long id)
+        public Admin(long id) // Конструктор класса Admin, принимающий параметр id и инициализирующий компоненты страницы.
         {
             InitializeComponent();
-            DateNow(id);
-            var Emp = helper.GetContext().employees.ToList();
+            DateNow(id); // Вызов метода DateNow для отображения приветственного сообщения.
+            var Emp = helper.GetContext().employees.ToList();  // Получение списка сотрудников из базы данных и установка в качестве источника данных для LViemEmp.
             LViemEmp.ItemsSource = Emp;
         }
-        public void DateNow(long id)
+
+      
+        public void DateNow(long id) // Метод для отображения приветственного сообщения в зависимости от времени суток.
         {
             var info = helper.GetContext().employees.Where(u => u.idEmployee == id).FirstOrDefault();
             DateTime currentTime = DateTime.Now;
 
 
             if (currentTime.Hour >= 10 && currentTime.Hour < 12)
-        {
+            {
                 lblHiEmp.Content = $"Доброе утро {info.Name} {info.Surname} {info.Patronymic}";
 
-        }
+            }
             else if (currentTime.Hour >= 12 && currentTime.Hour <= 17)
-        {
+            {
                 lblHiEmp.Content = $"Добрый день {info.Name} {info.Surname} {info.Patronymic}";
 
             }
@@ -52,9 +54,10 @@ namespace WpfAirlineAPP.Pages
                 lblHiEmp.Content = $"Добрый вечер {info.Name} {info.Surname} {info.Patronymic}";
 
             }
-            }
+        }
 
-        private void btnFiltr_Click(object sender, RoutedEventArgs e)
+        
+        private void btnFiltr_Click(object sender, RoutedEventArgs e) // Метод для фильтрации данных по содержанию выбранных символов.
         {
             var context = helper.GetContext();
 
@@ -74,27 +77,27 @@ namespace WpfAirlineAPP.Pages
             }
         }
 
-        //private void LViemEmp_SelectionChanged(object sender, SelectionChangedEventArgs e)
-        //{
+        private void LViemEmp_SelectionChanged(object sender, SelectionChangedEventArgs e) // Обработчик события изменения выделения в LViemEmp для перехода к странице редактирования данных пользователя.
+        {
 
 
-        //    var u = LViemEmp.SelectedItem as AddUser.Models.employees;
+            var u = LViemEmp.SelectedItem as Models.employees;
 
-        //    NavigationService.Navigate(new Pages.Editing(u));
-        //}
+            NavigationService.Navigate(new Pages.Editing(u));
+        }
 
-        private void tbName_TextChanged(object sender, TextChangedEventArgs e)
+        private void tbName_TextChanged(object sender, TextChangedEventArgs e) // Обработчик события изменения текста в поле tbName, очищающий его значение.
         {
             tbName.Text = "";
         }
 
-        private void btnAdd_Click(object sender, RoutedEventArgs e)
+        private void btnAdd_Click(object sender, RoutedEventArgs e)  // Обработчик нажатия кнопки btnAdd для добавления нового сотрудника.
         {
-            var u = LViemEmp.SelectedItem as WpfAirlineAPP.Models.employees;
-            NavigationService.Navigate(new Pages.Editing());
+            var u = LViemEmp.SelectedItem as Models.employees;
+            NavigationService.Navigate(new Editing(null));
         }
 
 
-            }
-            }
+    }
+}
 

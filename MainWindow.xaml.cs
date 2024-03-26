@@ -23,17 +23,17 @@ namespace WpfAirlineAPP
         public MainWindow()
         {
             InitializeComponent();
-            FrmMain.Navigate(new Pages.Autho1());
+            FrmMain.Navigate(new Pages.Autho1()); // Навигация к странице Autho1 при создании экземпляра MainWindow.
         }
-        private void FrmMain_ContentRendered(object sender, EventArgs e)
+        private void FrmMain_ContentRendered(object sender, EventArgs e)  // Метод вызывается при рендеринге контента в элементе FrmMain.
         {
-            if (FrmMain.CanGoBack)
+            if (FrmMain.CanGoBack) // Проверка возможности перехода назад и установка видимости кнопки btnBack.
                 btnBack.Visibility = Visibility.Visible;
             else
                 btnBack.Visibility = Visibility.Hidden;
         }
 
-        private void btnBack_Click(object sender, RoutedEventArgs e)
+        private void btnBack_Click(object sender, RoutedEventArgs e) // Метод вызывается при нажатии на кнопку btnBack для перехода назад.
         {
             FrmMain.GoBack();
         }

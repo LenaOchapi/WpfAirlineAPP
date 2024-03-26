@@ -8,14 +8,13 @@
       d:DesignHeight="450" d:DesignWidth="800"
       Title="Admin">
 
-    <Grid Background="White">
-        <TextBlock x:Name="tbWelcome" HorizontalAlignment="Center" Margin="0,10,0,0" TextAlignment="Center" TextWrapping="Wrap" Text="Добро пожаловать" VerticalAlignment="Top" Width="154"/>
-        <TextBlock x:Name="tbRole" HorizontalAlignment="Center" Margin="0,58,0,0" TextAlignment="Center" TextWrapping="Wrap" Text="Вы - !" VerticalAlignment="Top"/>
-
-        <ListView Name="LViemProduct" Grid.Column="0" Margin="10,10,30,20" d:ItemsSource="{d:SampleData ItemCount=6}" SelectionChanged="Sotrudnik_SelectionChanged">
+    <Grid>
+        <Label x:Name="lblHiEmp" Content="" HorizontalAlignment="Left" Margin="0,4,0,0" VerticalAlignment="Top">
+        </Label>
+        <ListView x:Name="LViemEmp" Grid.Column="0" Margin="0,78,0,45" d:ItemsSource="{d:SampleData ItemCount=1}" SelectionChanged="LViemEmp_SelectionChanged">
             <ListView.ItemsPanel>
                 <ItemsPanelTemplate>
-                    <UniformGrid Columns="1"/>
+                    <UniformGrid Columns="4"/>
                 </ItemsPanelTemplate>
             </ListView.ItemsPanel>
             <ListView.ItemContainerStyle>
@@ -25,27 +24,26 @@
             </ListView.ItemContainerStyle>
             <ListView.ItemTemplate>
                 <DataTemplate>
-
-                    <Border BorderBrush="Black" BorderThickness="1" Background="{Binding Background}">
-                        <Grid>
-                            <Grid.ColumnDefinitions>
-                                <ColumnDefinition Width="200"/>
-                                <ColumnDefinition Width="*"/>
-                                <ColumnDefinition Width="100"/>
-                            </Grid.ColumnDefinitions>
-                            <Image Width="180" Height="100" Margin="5" Source="/Pages/pictures/ChiChi.webp"/>
-                            <StackPanel Grid.Column="1" Margin="5">
-                                <TextBlock Text="{Binding Name}" FontWeight="Bold"/>
-                                <TextBlock Text="{Binding Surname}"/>
-                                <TextBlock Text="{Binding idJobTitle}"/>
-                                <TextBlock Text="{Binding phoneNumber}"/>
-                                <TextBlock Text="{Binding email}"/>
+                    <Border BorderBrush="Black" BorderThickness="1" Background="{Binding Background}" Height="232" Width="210">
+                        <Grid RenderTransformOrigin="0.629,0.478" Height="163" Width="200">
+                            <Image Margin="52,-28,52,111" Source="/Pages/pictures/NewChiChi.png" Stretch="Fill" Grid.ColumnSpan="2"/>
+                            <StackPanel x:Name="PanelEmp" Margin="10,52,10,-39" Grid.ColumnSpan="2">
+                                <TextBlock Text="{Binding Post.Name}" TextAlignment="Center"/>
+                                <TextBlock Text="{Binding Name}" TextAlignment="Center" FontWeight="Bold"/>
+                                <TextBlock Text="{Binding Surname}" TextAlignment="Center"/>
+                                <TextBlock Text="{Binding Patronymic}" TextAlignment="Center"/>
+                                <TextBlock Text="{Binding Email}" TextAlignment="Center"/>
                             </StackPanel>
                         </Grid>
                     </Border>
                 </DataTemplate>
             </ListView.ItemTemplate>
         </ListView>
+        <TextBox x:Name="tbName" HorizontalAlignment="Left" Margin="0,44,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="120" TextChanged="tbName_TextChanged" />
+        <TextBox x:Name="tbSurname" HorizontalAlignment="Left" Margin="198,42,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" />
+        <TextBox x:Name="tbPatronymic" HorizontalAlignment="Left" Margin="362,44,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" />
+        <Button x:Name="btnFiltr" Content="Фильтр" HorizontalAlignment="Left" Margin="520,24,0,0" VerticalAlignment="Top" Click="btnFiltr_Click" />
+        <Button x:Name="btnAdd" Content="Добавить" HorizontalAlignment="Left" Margin="683,24,0,0" VerticalAlignment="Top" Click="btnAdd_Click"/>
 
     </Grid>
 </Page>
