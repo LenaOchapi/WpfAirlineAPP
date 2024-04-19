@@ -30,7 +30,7 @@ namespace WpfAirlineAPP.Pages
     /// </summary>
     public partial class Editing : System.Windows.Controls.Page
     {
-        Models.AirlineEntities airlines = new Models.AirlineEntities();
+        Models.AirlineEntities2 airlines = new Models.AirlineEntities2();
         private employees emp;
         public Editing(Models.employees employeer)
         {
@@ -150,16 +150,6 @@ namespace WpfAirlineAPP.Pages
                 airlines.employees.Add(emp);
                 airlines.SaveChanges();
 
-                try //начинаю делать документ туть
-                {
-                    var items = new Dictionary<string, string>()
-                    {
-                        {"<nomerDogovora>",""},
-                        {"<city>",""},
-                        {"<city>",""}
-                    };
-                }
-                catch { }
 
             }
             catch (Exception ex) { MessageBox.Show(ex.Message ); }
@@ -182,7 +172,7 @@ namespace WpfAirlineAPP.Pages
 
         }
 
-        private void ButtonDogovor_Click(object sender, RoutedEventArgs e)
+        private void ButtonDogovor_Click(object sender, RoutedEventArgs e) //трудовой договор ТУТ
         {
             DateTime currentDate = DateTime.Now;
             string[] mounths = { "Января", "Февраля", "Марта", "Апреля", "Мая", "Июня", "Июля", "Августа", "Сентября", "Октября", "Ноября", "Декабря" };
@@ -210,7 +200,7 @@ namespace WpfAirlineAPP.Pages
                 {"number", $"{emp.idEmployee}"},
                 {"gorod", "Новосибирск"},
                 {"day", $"{currentDate.Day}"},
-                {"month", $"{mounths[currentDate.Month-1]}"},
+                {"mounth", $"{mounths[currentDate.Month-1]}"},
                 {"year", $"{currentDate.Year}" },
                 {"director", "Очапова Елена Ювинальевна"},
                 {"FIOEmp", $"{emp.Name+" "+emp.Surname+" "+emp.Patronymic}"},
@@ -253,8 +243,8 @@ namespace WpfAirlineAPP.Pages
                     MatchSoundsLike: missing, MatchAllWordForms: false, Forward: true,
                     Wrap: wrap, Format: false, ReplaceWith: missing, Replace: replace);
                 }
-
-                object newFile = $"C:\\Users\\Eugene\\Desktop\\DocJob\\dogovor{emp.idEmployee}.docx";
+          
+                object newFile = $"D:\\TrudDogovori\\dogovor{emp.idEmployee}.docx";
                 wordDoc.SaveAs2(newFile); 
                 wordApp.ActiveDocument.Close();
                 wordApp?.Quit();

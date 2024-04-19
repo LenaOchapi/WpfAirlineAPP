@@ -57,22 +57,26 @@ namespace WpfAirlineAPP.Pages
 
                     string hashingpasword = hasher.HashPassword(password);
                     var user = helper.GetContext().Users.Where(u => u.login == login && u.password == hashingpasword).FirstOrDefault();
-
-                    if (user != null)
-                    {
-                        var employee = helper.GetContext().employees.FirstOrDefault(emp => emp.IDuser == user.IDUser);
-
-                        if (Cod==0)
+              
+                        if (user != null)
                         {
-                            Random random = new Random();
-                            Cod = random.Next(10000, 99999);
-                            SendEmail(Cod, employee.email);
-                            waitCod();
-                            tbCod.Visibility = Visibility.Visible;
-                            txtBlockCod.Visibility = Visibility.Visible;
-                            txtBAnotherCod.Visibility = Visibility.Visible;
-                        }
-                        
+                            var employee = helper.GetContext().employees.FirstOrDefault(emp => emp.IDuser == user.IDUser);
+
+                            try
+                            {
+                                if (Cod==0)
+                                {
+                                    Random random = new Random();
+                                    Cod = random.Next(10000, 99999);
+                                    SendEmail(Cod, employee.email);
+                                    waitCod();
+                                    tbCod.Visibility = Visibility.Visible;
+                                    txtBlockCod.Visibility = Visibility.Visible;
+                                    txtBAnotherCod.Visibility = Visibility.Visible;
+                                }
+                            }
+                            catch (Exception ex) { MessageBox.Show(ex.Message); }
+
 
                         if (employee != null && employee.idJobTitle != 0) // добавить в иф для двухфакторки && tbCod.Text==Convert.ToString(Cod)
                         {
@@ -101,15 +105,19 @@ namespace WpfAirlineAPP.Pages
 
                             }
                         }
+                        else 
+                        {
+                            MessageBox.Show("неверно введены логин или пароль", "внимание", MessageBoxButton.OK) ;
+                        }
+                            
+                        }
+                    //else 
+                    //{
+                    //    MessageBox.Show("Пользователя с таким логином или паролем не существует!");
+                    //    //countUnsuccessfull++;
 
-                    }
-                    else 
-                    {
-                        MessageBox.Show("Пользователя с таким логином или паролем не существует!", "Внимание", MessageBoxButton.OK);
-                        countUnsuccessfull++;
-
-                        //GenerateCaptcha();
-                    }
+                    //    //GenerateCaptcha();
+                    //}
 
                 }
                 else //капча идет нафиг

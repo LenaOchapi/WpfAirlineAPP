@@ -10,12 +10,12 @@ namespace WpfAirlineAPP
 {
     internal class helper
     {
-        private static AirlineEntities s_firstDBEntities;
-        public static AirlineEntities GetContext()
+        private static AirlineEntities2 s_firstDBEntities;
+        public static AirlineEntities2 GetContext()
         {
             if (s_firstDBEntities == null)
             {
-                s_firstDBEntities = new AirlineEntities();
+                s_firstDBEntities = new AirlineEntities2();
             }
             return s_firstDBEntities;
         }

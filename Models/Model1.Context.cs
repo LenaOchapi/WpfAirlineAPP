@@ -13,10 +13,10 @@ namespace WpfAirlineAPP.Models
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
     
-    public partial class AirlineEntities : DbContext
+    public partial class AirlineEntities2 : DbContext
     {
-        public AirlineEntities()
-            : base("name=AirlineEntities")
+        public AirlineEntities2()
+            : base("name=AirlineEntities2")
         {
         }
     
