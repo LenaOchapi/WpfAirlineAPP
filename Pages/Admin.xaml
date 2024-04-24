@@ -8,7 +8,7 @@
       d:DesignHeight="450" d:DesignWidth="800"
       Title="Admin">
 
-    <Grid>
+    <Grid Margin="0,0,-206,0">
         <Label x:Name="lblHiEmp" Content="" HorizontalAlignment="Left" Margin="0,4,0,0" VerticalAlignment="Top">
         </Label>
         <ListView x:Name="LViemEmp" Grid.Column="0" Margin="0,78,0,45" d:ItemsSource="{d:SampleData ItemCount=1}" SelectionChanged="LViemEmp_SelectionChanged">
@@ -44,6 +44,7 @@
         <TextBox x:Name="tbPatronymic" HorizontalAlignment="Left" Margin="362,44,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" />
         <Button x:Name="btnFiltr" Content="Фильтр" HorizontalAlignment="Left" Margin="520,24,0,0" VerticalAlignment="Top" Click="btnFiltr_Click" />
         <Button x:Name="btnAdd" Content="Добавить" HorizontalAlignment="Left" Margin="683,24,0,0" VerticalAlignment="Top" Click="btnAdd_Click"/>
+        <Button Content="Выгрузить в excel" HorizontalAlignment="Left" x:Name="btnSaveExcel" Margin="834,24,0,0" VerticalAlignment="Top" Width="139" Click="btnSaveExcel_Click"/>
 
     </Grid>
 </Page>

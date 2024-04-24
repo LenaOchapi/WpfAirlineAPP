@@ -1,4 +1,5 @@
 ﻿using AddUser.Models;
+using Microsoft.Office.Interop.Excel;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -21,7 +22,7 @@ namespace WpfAirlineAPP.Pages
     /// <summary>
     /// Логика взаимодействия для Admin.xaml
     /// </summary>
-    public partial class Admin : Page
+    public partial class Admin : System.Windows.Controls.Page
     {
 
         public Admin(long id) // Конструктор класса Admin, принимающий параметр id и инициализирующий компоненты страницы.
@@ -97,7 +98,52 @@ namespace WpfAirlineAPP.Pages
             NavigationService.Navigate(new Editing(null));
         }
 
+        public class Employee
+        {
+            public int IdEmp { get; set; }
+            public string Должность { get; set; }
+            public string Имя { get; set; }
+            public string Фамилия { get; set; }
+            public string Отчество { get; set; }
+            public string НомерТелефона { get; set; }
+            public string Email { get; set; }
+        }
 
+        private void btnSaveExcel_Click(object sender, RoutedEventArgs e)
+        {
+            var context = helper.GetContext();
+
+            var empl = context.employees.Select(r => new Employee
+            {
+                IdEmp = (int)r.idEmployee,
+                Должность = context.JobTitles.Where(p => p.idJobTitle == r.idJobTitle).Select(p => p.NameOfJobTitle).FirstOrDefault(),
+                Имя = r.Name,
+                Фамилия = r.Surname,
+                Отчество = r.Patronymic,
+                НомерТелефона = r.phoneNumber,
+                Email = r.email
+            }).ToList();
+
+            Microsoft.Office.Interop.Excel.Application excelApp = new Microsoft.Office.Interop.Excel.Application();
+            Workbook excelWorkbook = excelApp.Workbooks.Add();
+            Worksheet excelWorksheet = excelWorkbook.Sheets[1];
+            for (int i = 0; i < typeof(Employee).GetProperties().Length; i++)
+            {
+                excelWorksheet.Cells[1, i + 1]= typeof(Employee).GetProperties()[i].Name;
+            }
+
+            for (int i = 0; i < empl.Count; i++)
+            {
+                for (int j = 0; j < typeof(Employee).GetProperties().Length; j++)
+                {
+                    excelWorksheet.Cells[i +2, j + 1] = typeof(Employee).GetProperties()[j].GetValue(empl[i]);
+                }
+            }
+            excelWorkbook.SaveAs("C:\\Users\\user\\Desktop\\Sotrud\\Sotrud.xlsx");
+            excelWorkbook.Close();
+            excelApp.Quit();
+
+        }
     }
 }
 
